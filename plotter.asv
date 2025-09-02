@@ -1,0 +1,77 @@
+function [] = plotter(y_desired,y_traditional_ILC,y_Model_Based_ILC, ii) 
+
+x=@(t)t;
+z=8;
+
+ t=0:0.01:8;
+ 
+ if ii==1
+ figure(1);
+ plot(x(t),y_desired(t),'color', [0 0 0],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_Model_Based_ILC(t),'color', [0 0 1],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_traditional_ILC(t),'color', [1 0 0],'linestyle','-','marker','.','markersize',4)
+
+%  axis([0  1 -1 1])
+ title("Process of 1-th Iteration",'FontSize',14);
+  ylabel('qd, q(deg)','FontSize',11);
+  xlabel('Time (s)','FontSize',12);
+  ylim([0 50]);
+  xlim([0 7]);
+  legend("Desired Trajectory","Traditional ILC","Model Based ILC");
+ pause(5);
+ 
+ elseif ii==5
+     figure(2);
+      plot(x(t),y_desired(t),'color', [0 0 0],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_Model_Based_ILC(t),'color', [0 0 1],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_traditional_ILC(t),'color', [1 0 0],'linestyle','-','marker','.','markersize',4)
+
+%  axis([0  1 -1 1])
+ title("Process of 5-th Iteration",'FontSize',14);
+  ylabel('qd, q(deg)','FontSize',11);
+  xlabel('Time (s)','FontSize',12);
+  ylim([0 50]);
+  xlim([0 7]);
+  legend("Desired Trajectory","Traditional ILC","Model Based ILC");
+ pause(5);
+ elseif ii==10
+     figure(3);
+      plot(x(t),y_desired(t),'color', [0 0 0],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_Model_Based_ILC(t),'color', [0 0 1],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_traditional_ILC(t),'color', [1 0 0],'linestyle','-','marker','.','markersize',4)
+
+%  axis([0  1 -1 1])
+ title("Process of 10-th Iteration",'FontSize',14);
+  ylabel('qd, q(deg)','FontSize',11);
+  xlabel('Time (s)','FontSize',12);
+  ylim([0 50]);
+  xlim([0 7]);
+  legend("Desired Trajectory","Traditional ILC","Model Based ILC");
+ pause(5);
+ end
+ 
+ figure(4);
+ 
+ 
+  plot(x(t),error_Model_Based_ILC(t),'color', [0 0 0],'linestyle','-','marker','*','markersize',4)
+  plot(x(t),error_traditional_ILC(t),'color', [1 0 0],'linestyle','-','marker','o','markersize',4)
+%   axis([0  1 -1 1])
+  
+  title('Change of RMSE with Iteration Number','FontSize',14);
+  ylabel('Error(deg)','FontSize',11);
+  xlabel('Iteration Number','FontSize',12);
+  ylim([0 18]);
+  xlim([0 10]);
+  hold on;
+  
+  
+  pause(5);
+% 
+
+end

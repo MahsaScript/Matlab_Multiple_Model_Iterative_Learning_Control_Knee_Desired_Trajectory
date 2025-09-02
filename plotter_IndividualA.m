@@ -1,0 +1,18 @@
+function [] = plotter_IndividualA(y_desired,y_Model_Based_ILC,y_traditional_ILC) 
+x=@(t)t;
+z=8;
+t=0:0.01:8; 
+ figure(6);
+ plot(x(t),y_desired(t),'color', [0 0 0],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_Model_Based_ILC(t),'color', [0 0 1],'linestyle','-','marker','.','markersize',4)
+ hold on;
+ plot(x(t),y_traditional_ILC(t),'color', [1 0 0],'linestyle','-','marker','.','markersize',4)
+%  axis([0  1 -1 1])
+ title("Comparison of different iteration times",'FontSize',14);
+  ylabel('qd, q(deg)','FontSize',11);
+  xlabel('Time (s)','FontSize',12);
+  ylim([0 50]);
+  xlim([0 7]);
+  legend("Desired Trajectory","1st Iteration","3rd Iteration", "6th Iteration");
+end
